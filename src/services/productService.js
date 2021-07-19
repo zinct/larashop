@@ -10,6 +10,10 @@ function addProduct(data) {
   return http.post(apiEndPoint, data);
 }
 
+function editProduct(productId, data) {
+  return http.put(apiEndPoint + '/' + productId, data);
+}
+
 function delProduct(productId) {
   return http.del(apiEndPoint + '/' + productId);
 }
@@ -17,6 +21,7 @@ function delProduct(productId) {
 const productService = {
   getProduct,
   addProduct,
+  editProduct,
   delProduct,
 }
 

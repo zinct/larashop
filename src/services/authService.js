@@ -21,6 +21,7 @@ async function register(data) {
   // Store token to local storage
   localStorage.setItem(tokenKey, resData.data.token);
   localStorage.setItem(userKey, JSON.stringify(resData.data.user));
+  return resData;
 }
 
 async function login(username, password) { 
@@ -29,6 +30,7 @@ async function login(username, password) {
   // Store token to local storage
   localStorage.setItem(tokenKey, resData.data.token);
   localStorage.setItem(userKey, JSON.stringify(resData.data.user));
+  return resData;
 }
 
 function logout() {

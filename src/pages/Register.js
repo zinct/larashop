@@ -23,27 +23,11 @@ const Register = (props) => {
     e.preventDefault();
 
     try {
-
-      const { data: resData } = await authService.register(data);
-      if(resData.code === 200) {
-        resetForm();
-        toastService.success('Register has successfully.');
-        localStorage.setItem('token', resData.data.token);
-        window.location = '/product';
-      }
-
+      await authService.register(data);
+      window.location = '/product';
     } catch({ response }) {
       setError(response.data.errors);
     }
-  }
-
-  function resetForm() {
-    setData({
-      name: '',
-      username: '',
-      password: '',
-      password_confirmation: '',
-    });
   }
 
   return (

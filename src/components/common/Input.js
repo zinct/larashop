@@ -19,7 +19,7 @@ function Input({ name, value, onChange, error, type = 'text', placeholder = '...
   } else if(type === 'select') {
     return (
       <React.Fragment>
-        <select className={getClassName()} onChange={onChange} name={name} id={name}>
+        <select className={getClassName()} value={value} onChange={onChange} name={name} id={name}>
           <option value="">{placeholder}</option>
           {optionData.map(row => <option key={row.id} value={row.id}>{row.name}</option>)}
         </select>

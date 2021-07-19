@@ -39,7 +39,13 @@ const Product = ({ user }) => {
   }
 
   const column = [
-    { label: 'Name', name: 'name', content: product => <Link to={`/products/${product.id}`}>{product.name}</Link> },
+    { label: 'Name', name: 'name', 
+      content: product => 
+        <Link to={{ 
+          pathname: `/product/${product.id}`,
+          state: { product: product },
+         }} >{product.name}</Link> 
+    },
     { label: 'Category', name: 'category', content: product => product.category.name },
     { label: 'Price', name: 'price', content: product => formatPrice(product.price)},
     { label: 'Stock', name: 'stock' },
@@ -53,7 +59,7 @@ const Product = ({ user }) => {
     <React.Fragment>
       <div className="d-flex justify-content-between align-items-center">
         <h4 className="mb-3">Product Table</h4>
-        <Link className="btn btn-primary btn-sm" to="/product/create">Insert Product</Link>
+        {user && <Link className="btn btn-primary btn-sm" to="/product/create">Insert Product</Link>}
       </div>
       <Table
         column={column}
